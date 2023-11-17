@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "96a97685-a77a-4322-b7c3-bd5472ce55aa",
+		"name": "flAI - NodeJs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20678299"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configureUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/configureUser",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"configureUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/getAllUsers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "aircrafts",
+			"item": [
+				{
+					"name": "newAircraft",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/aircraft/newAircraft",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"aircraft",
+								"newAircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAircraft",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/aircraft/deleteAircraft",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"aircraft",
+								"deleteAircraft"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAircrafts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/aircraft/getAllAircrafts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"aircraft",
+								"getAllAircrafts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prediction",
+			"item": [
+				{
+					"name": "getResult",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/prediction/result/{ID_DA_AERONAVE}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"prediction",
+								"result",
+								"{ID_DA_AERONAVE}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "model",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/model/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"model",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/model/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"model",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

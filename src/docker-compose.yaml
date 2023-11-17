@@ -1,0 +1,81 @@
+version: '3'
+
+
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+
+
+  Main-Server:
+    container_name: Main-Server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://user:password@postgres/flAI
+      
+
+
+  IA-Server:
+    container_name: IA-Server
+    build:
+      context: ./Modelo-ia
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+
+
+
+  model:
+    build:
+      context: ./dataBase
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: database
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    depends_on:
+      - postgres
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  Python-Server:
+    container_name: Python-Server
+    build:
+      context: ./back-data-flask
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
+
+volumes:
+  postgres_data:

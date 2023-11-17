@@ -1,0 +1,75 @@
+//npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Model {
+  id          Int     @id @default(autoincrement())
+  version     String
+  title       String  @db.VarChar(255)
+  description String?
+  runs        Runs[]
+}
+
+model User {
+  id             Int     @id @default(autoincrement())
+  email          String  @unique
+  hashedPassword String
+  name           String?
+  position       String?
+  adminStatus    Int
+  runs           Runs[]
+}
+
+model Runs {
+  id           Int          @id @default(autoincrement())
+  datetime     DateTime     @default(now())
+  modelId      Int
+  executedById Int
+  prediction   Prediction[]
+  executedBy   User         @relation(fields: [executedById], references: [id])
+  model        Model        @relation(fields: [modelId], references: [id])
+  aircraftId Int
+  aircraft   Aircrafts? @relation(fields: [aircraftId], references: [id])
+}
+
+model Aircrafts {
+  id           Int          @id @default(autoincrement())
+  name         String
+  serialNumber String       @unique
+  model        String
+  isActive     Boolean
+  runs   Runs[]
+}
+
+model Prediction {
+  id      Int       @id @default(autoincrement())
+  runId   Int?
+  run     Runs?     @relation(fields: [runId], references: [id])
+  aircraftSerNum_1 Int?
+  DeltaPressAltitude_1a Float?
+  DeltaPressAltitude_2a Float?
+  DeltaBleedOutTemp_1b Float?
+  DeltaBleedOutTemp_2b Float?
+  DeltaBleedMonPress_1b Float?
+  DeltaBleedMonPress_2b Float?
+  MeanBleedOutTemp_1b Float?
+  MeanBleedOutTemp_2b Float?
+  MeanBleedMonPress_1b Float? 
+  MeanBleedMonPress_2b Float?
+  MeanPressAltitude_1a Float?
+  MeanPressAltitude_2a Float?
+  time_since_maintenance BigInt?
+  preFail100 Int?
+  preFail70 Int?
+  preFail50 Int?
+  phaseOfFlight_1 Int?
+  Flight Int?
+  date DateTime?
+}

@@ -1,0 +1,8 @@
+*.csv
+*.xls
+*.xlsx
+*.tsv
+*.parquet
+*.vscode
+*.env
+src/etl/db/.env
